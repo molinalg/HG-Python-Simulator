@@ -1,0 +1,20 @@
+Origin;Text_Origin;Target;Text_Target;Weight;Death/Injury -> [YES/NO] [TRIBUTE/OPPONENT]
+INITIAL;;ATTACK;attacks [Y] ;0.1;N
+INITIAL;;CORNUCOPIA;runs to the Cornucopia. ;0.2;N
+INITIAL;;PARALISIS;is too nervous to move. ;0.1;N
+INITIAL;;FLEE;tries to flee. ;0.6;N
+ATTACK;attacks [Y] ;A_Success;and manages to kill the tribute.;0.3;YO
+ATTACK;attacks [Y] ;A_Fail;but is killed instead.;0.15;YT
+ATTACK;attacks [Y] ;A_Injure;and injures the tribute.;0.2;HO
+ATTACK;attacks [Y] ;A_Injured;but is injured instead.;0.1;HT
+ATTACK;attacks [Y] ;A_Escape;but the tribute escapes.;0.25;N
+CORNUCOPIA;runs to the Cornucopia. ;C_Success;The tribute grabs [O] and flees.;0.3;N
+CORNUCOPIA;runs to the Cornucopia. ;C_Fail;The tribute is not able to take anything.;0.2;N
+CORNUCOPIA;runs to the Cornucopia. ;ATTACKED;[Y] sees it and attacks ;0.5;N
+PARALISIS;is too nervous to move. ;PARALISIS_Confirm;;0.7;N
+PARALISIS;is too nervous to move. ;ATTACKED;[Y] sees it and attacks ;0.3;N
+FLEE;tries to flee. ;F_Success;No one notices.;0.9;N
+FLEE;tries to flee. ;ATTACKED;[Y] sees it and attacks ;0.1;N
+ATTACKED;[Y] sees it and attacks ;AD_Escape;but isn't successful.;0.55;N
+ATTACKED;[Y] sees it and attacks ;AD_Fail;killing the tribute.;0.35;YT
+ATTACKED;[Y] sees it and attacks ;AD_Success;being killed instead.;0.1;YO
