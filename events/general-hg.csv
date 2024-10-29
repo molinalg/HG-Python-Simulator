@@ -1,0 +1,80 @@
+Origin;Text_Origin;Target;Text_Target;Weight;Death/Injury -> [YES/NO/DEPENDS] [TRIBUTE/OPPONENT]
+INITIAL;;RANDOM;[R];0.28;D
+INITIAL;;SEARCH_TRIB;hunts for tributes.;0.15;N
+INITIAL;;SEARCH_RES;sets off in search of resources.;0.25;N
+INITIAL;;REC_GIFT;receives a [G] from an anonymous sponsor.;0.02;N
+INITIAL;;HIDE;hides from other tributes.;0.15;N
+INITIAL;;FIGHT;encounters [Y] and decides to fight, ;0.05;N
+INITIAL;;FIND;finds a [O].;0.1;N
+SEARCH_TRIB;hunts for tributes.;SEARCH_TRIB;hunts for tributes.;0.10;N
+SEARCH_TRIB;hunts for tributes.;RANDOM;[R];0.2;D
+SEARCH_TRIB;hunts for tributes.;FIGHT;encounters [Y] and decides to fight, ;0.5;N
+SEARCH_TRIB;hunts for tributes.;FIND;finds a [O].;0.10;N
+SEARCH_TRIB;hunts for tributes.;HIDE;hides from other tributes.;0.05;N
+SEARCH_TRIB;hunts for tributes.;REC_GIFT;receives a [G] from an anonymous sponsor.;0.05;N
+SEARCH_RES;sets off in search of resources.;SEARCH_RES;sets off in search of resources.;0.15;N
+SEARCH_RES;sets off in search of resources.;RANDOM;[R];0.25;D
+SEARCH_RES;sets off in search of resources.;FIGHT;encounters [Y] and decides to fight, ;0.1;N
+SEARCH_RES;sets off in search of resources.;FIND;finds a [O].;0.35;N
+SEARCH_RES;sets off in search of resources.;HIDE;hides from other tributes.;0.1;N
+SEARCH_RES;sets off in search of resources.;REC_GIFT;receives a [G] from an anonymous sponsor.;0.05;N
+RANDOM;[R];SEARCH_TRIB;hunts for tributes.;0.15;N
+RANDOM;[R];SEARCH_RES;sets off in search of resources.;0.25;N
+RANDOM;[R];FIGHT;encounters [Y] and decides to fight, ;0.08;N
+RANDOM;[R];FIND;finds a [O].;0.1;N
+RANDOM;[R];HIDE;hides from other tributes.;0.2;N
+RANDOM;[R];REC_GIFT;receives a [G] from an anonymous sponsor.;0.02;N
+RANDOM;[R];RANDOM;[R];0.2;D
+FIGHT;encounters [Y] and decides to fight, ;FIGHT_WIN;killing the tribute.;0.33;YO
+FIGHT;encounters [Y] and decides to fight, ;FIGHT_LOSE;being killed instead.;0.27;YT
+FIGHT;encounters [Y] and decides to fight, ;FIGHT_INJURE;injuring the tribute.;0.25;HO
+FIGHT;encounters [Y] and decides to fight, ;FIGHT_INJURED;being injured instead.;0.15;HT
+FIGHT_WIN;killing the tribute.;RANDOM;[R];0.25;D
+FIGHT_WIN;killing the tribute.;SEARCH_TRIB;hunts for tributes.;0.15;N
+FIGHT_WIN;killing the tribute.;SEARCH_RES;sets off in search of resources.;0.25;N
+FIGHT_WIN;killing the tribute.;REC_GIFT;receives a [G] from an anonymous sponsor.;0.08;N
+FIGHT_WIN;killing the tribute.;HIDE;hides from other tributes.;0.08;N
+FIGHT_WIN;killing the tribute.;FIGHT;encounters [Y] and decides to fight, ;0.09;N
+FIGHT_WIN;killing the tribute.;FIND;finds a [O].;0.1;N
+FIGHT_INJURE;injuring the tribute.;RANDOM;[R];0.25;D
+FIGHT_INJURE;injuring the tribute.;SEARCH_TRIB;hunts for tributes.;0.15;N
+FIGHT_INJURE;injuring the tribute.;SEARCH_RES;sets off in search of resources.;0.25;N
+FIGHT_INJURE;injuring the tribute.;REC_GIFT;receives a [G] from an anonymous sponsor.;0.05;N
+FIGHT_INJURE;injuring the tribute.;HIDE;hides from other tributes.;0.1;N
+FIGHT_INJURE;injuring the tribute.;FIGHT;encounters [Y] and decides to fight, ;0.1;N
+FIGHT_INJURE;injuring the tribute.;FIND;finds a [O].;0.1;N
+FIGHT_INJURED;being injured instead.;RANDOM;[R];0.2;D
+FIGHT_INJURED;being injured instead.;SEARCH_TRIB;hunts for tributes.;0.05;N
+FIGHT_INJURED;being injured instead.;SEARCH_RES;sets off in search of resources.;0.22;N
+FIGHT_INJURED;being injured instead.;REC_GIFT;receives a [G] from an anonymous sponsor.;0.09;N
+FIGHT_INJURED;being injured instead.;HIDE;hides from other tributes.;0.27;N
+FIGHT_INJURED;being injured instead.;FIGHT;encounters [Y] and decides to fight, ;0.08;N
+FIGHT_INJURED;being injured instead.;FIND;finds a [O].;0.09;N
+FIND;finds a [O].;RANDOM;[R];0.26;D
+FIND;finds a [O].;SEARCH_TRIB;hunts for tributes.;0.22;N
+FIND;finds a [O].;SEARCH_RES;sets off in search of resources.;0.22;N
+FIND;finds a [O].;REC_GIFT;receives a [G] from an anonymous sponsor.;0.06;N
+FIND;finds a [O].;HIDE;hides from other tributes.;0.12;N
+FIND;finds a [O].;FIGHT;encounters [Y] and decides to fight, ;0.1;N
+FIND;finds a [O].;FIND;finds a [O].;0.02;N
+REC_GIFT;receives a [G] from an anonymous sponsor.;RANDOM;[R];0.28;D
+REC_GIFT;receives a [G] from an anonymous sponsor.;SEARCH_TRIB;hunts for tributes.;0.24;N
+REC_GIFT;receives a [G] from an anonymous sponsor.;SEARCH_RES;sets off in search of resources.;0.2;N
+REC_GIFT;receives a [G] from an anonymous sponsor.;REC_GIFT;receives a [G] from an anonymous sponsor.;0.01;N
+REC_GIFT;receives a [G] from an anonymous sponsor.;HIDE;hides from other tributes.;0.1;N
+REC_GIFT;receives a [G] from an anonymous sponsor.;FIGHT;encounters [Y] and decides to fight, ;0.12;N
+REC_GIFT;receives a [G] from an anonymous sponsor.;FIND;finds a [O].;0.05;N
+HIDE;hides from other tributes.;RANDOM_HIDE;[RH];0.25;D
+HIDE;hides from other tributes.;SEARCH_TRIB;hunts for tributes.;0.17;N
+HIDE;hides from other tributes.;SEARCH_RES;sets off in search of resources.;0.34;N
+HIDE;hides from other tributes.;REC_GIFT;receives a [G] from an anonymous sponsor.;0.01;N
+HIDE;hides from other tributes.;HIDE;hides from other tributes.;0.2;N
+HIDE;hides from other tributes.;FIGHT;encounters [Y] and decides to fight, ;0.03;N
+HIDE;hides from other tributes.;FIND;finds a [O].;0.0;N
+RANDOM_HIDE;[RH];RANDOM_HIDE;[RH];0.2;D
+RANDOM_HIDE;[RH];SEARCH_TRIB;hunts for tributes.;0.2;N
+RANDOM_HIDE;[RH];SEARCH_RES;sets off in search of resources.;0.35;N
+RANDOM_HIDE;[RH];REC_GIFT;receives a [G] from an anonymous sponsor.;0.01;N
+RANDOM_HIDE;[RH];HIDE;hides from other tributes.;0.2;N
+RANDOM_HIDE;[RH];FIGHT;encounters [Y] and decides to fight, ;0.04;N
+RANDOM_HIDE;[RH];FIND;finds a [O].;0.0;N

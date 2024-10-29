@@ -1,4 +1,4 @@
-from app import App
+from modules.app import App
 
 app = App()
 app.start()

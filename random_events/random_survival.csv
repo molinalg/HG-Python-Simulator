@@ -1,0 +1,7 @@
+Text;Weight;Result
+falls into a hole and gets injured.;0.125;HT
+falls into a hole and dies.;0.10;YT
+trips on a rock and gets injured.;0.125;HT
+gets bit by a venomous insect and dies.;0.25;YT
+gets killed by a [A].;0.25;YT
+eats a venomous plant and dies.;0.15;YT

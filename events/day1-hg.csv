@@ -8,7 +8,7 @@ ATTACK;attacks [Y] ;A_Fail;but is killed instead.;0.15;YT
 ATTACK;attacks [Y] ;A_Injure;and injures the tribute.;0.2;HO
 ATTACK;attacks [Y] ;A_Injured;but is injured instead.;0.1;HT
 ATTACK;attacks [Y] ;A_Escape;but the tribute escapes.;0.25;N
-CORNUCOPIA;runs to the Cornucopia. ;C_Success;The tribute grabs [O] and flees.;0.3;N
+CORNUCOPIA;runs to the Cornucopia. ;C_Success;The tribute grabs a [O] and flees.;0.3;N
 CORNUCOPIA;runs to the Cornucopia. ;C_Fail;The tribute is not able to take anything.;0.2;N
 CORNUCOPIA;runs to the Cornucopia. ;ATTACKED;[Y] sees it and attacks ;0.5;N
 PARALISIS;is too nervous to move. ;PARALISIS_Confirm;;0.7;N
