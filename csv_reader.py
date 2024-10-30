@@ -1,7 +1,10 @@
 import csv
+
+# Class to load the CSV files
 class CSV_Reader:
 
     def __init__(self):
+        # Lists to store data
         self.data = []
         self.random = []
         self.random_resistance = []
@@ -11,6 +14,7 @@ class CSV_Reader:
         self.creatures = []
     
     def read(self,path):
+        """Reads the content of a CSV file"""
         self.data = []
         with open(path, newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=';')
@@ -21,8 +25,10 @@ class CSV_Reader:
         return self.parse_data()
     
     def parse_data(self):
+        """Process the data read from a CSV file"""
         self.parsed_data = []
         for row in self.data:
+            # Each row needs a specific final format
             temp_data = []
             temp_data.append({row[0]: row[1]})
             temp_data.append({row[2]: row[3]})
@@ -33,6 +39,7 @@ class CSV_Reader:
         return self.parsed_data
     
     def load_random(self):
+        """Read all the files of random events"""
         with open('random_events/random.csv', newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=';')
             for row in reader:
@@ -64,6 +71,7 @@ class CSV_Reader:
         return self.random, self.random_resistance, self.random_survival, self.random_hide
 
     def load_utils(self):
+        """Read the files with the objects and animals"""
         with open('miscellaneous/objects.csv', newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=';')
             for row in reader:

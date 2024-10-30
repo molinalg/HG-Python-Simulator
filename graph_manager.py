@@ -1,39 +1,43 @@
 import networkx as nx
 import random
-from csv_reader import CSV_Reader
 from matplotlib import pyplot as plt
 
+# Class to manage graphs and events
 class Graph_Manager:
 
     def __init__(self,objects,creatures):
+        # Objects and animals in the game
         self.objects = objects
         self.creatures = creatures
     
     def create_graph(self,data):
-        # Creates a graph from the given data
+        """Creates a graph from the given data"""
         temp_graph = nx.DiGraph()
+        # Process each row
         for row in data:
             starting_node = tuple(row[0].items())
             target_node = tuple(row[1].items())
             weight = float(row[2])
             effect = row[3]
-
+            
+            # Add every node not already present
             if starting_node not in temp_graph:
                 temp_graph.add_node(starting_node)
             if target_node not in temp_graph:
                 temp_graph.add_node(target_node)
 
             temp_graph.add_edge(starting_node, target_node, weight=weight, effect=effect)
-            
+
         return temp_graph
         
     def display_graph(self,graph):
-        # Displays the given graph on screen
+        """Displays the given graph on screen"""
         pos = nx.spring_layout(graph)
         nx.draw(graph, pos, with_labels=True, node_size=500, node_color='skyblue', font_size=10)
         plt.show()
 
     def obtain_actions_day1(self,tributes):
+        """Obtains and processes the actions of the cornucopia day"""
         # List to store the actions
         actions = []
         # List to store tributes that have already participated
@@ -71,6 +75,8 @@ class Graph_Manager:
                     action_message = action_message.replace("[Y]",tribute2["name"] + " from district " + str(tribute2["district"]))
             
             message += action_message
+
+            # Process if the tribute is injured or dead
             if result == "YT":
                 tribute["status"] = "dead"
             elif result == "HT":
@@ -90,6 +96,7 @@ class Graph_Manager:
         return actions, processed, changes
 
     def obtain_actions(self,tributes):
+        """Obtains and processes a new set of events"""
         # List to store the actions
         actions = []
         # List to store tributes that have already participated
@@ -200,6 +207,7 @@ class Graph_Manager:
 
             actions.append(message)
 
+            # Process if the tribute is injured or dead
             if result == "YT":
                 tribute["status"] = "dead"
             elif result == "HT":
@@ -211,6 +219,7 @@ class Graph_Manager:
         return actions, processed, changes
 
     def find_final_nodes(self,graph,start_node):
+        """Returns a final node in the graph"""
         # Find a final node in the graph and form the message to return
         message = ""
         current_node = start_node
@@ -231,6 +240,7 @@ class Graph_Manager:
         return message, result
 
     def next_node(self,graph,current_node,current_result):
+        """Returns the next node in the graph"""
         # Get the list of edges
         edges = graph.edges(current_node, data=True)
 

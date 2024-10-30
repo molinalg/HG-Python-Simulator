@@ -1,5 +1,7 @@
 from graph_manager import Graph_Manager
 from csv_reader import CSV_Reader
+
+# Class to execute and process events
 class Game:
 
     def __init__(self, districts):
@@ -19,8 +21,8 @@ class Game:
         # Create a list for the dead
         self.dead = []
     
-    # Create a list of tributes
     def generate_tributes(self, districts):
+        """Create a list of tributes"""
         tributes = []
         for district in districts:
             for member in district.members:
@@ -91,22 +93,12 @@ class Game:
                 }
 
                 tributes.append(tribute)
-                """
-                print("########################################{}#########################################".format(member.name))
-                print("----------------------------RANDOM GENERAL-----------------------------")
-                for event in tribute["random_events"]:
-                    print(event)
-                print("----------------------------RANDOM HIDE-----------------------------")
-                for event in tribute["random_hide_events"]:
-                    print(event)
-"""
-                
                 
         return tributes
 
-    # Function to alter the probabilities read in the csv for a specific person
     # Receives an affected node, a value to alter probability values and the indexes affected. Balances all after the increase
     def alter_probabilities(self,member,attribute,data,affected_node,indexes,values):
+        """Alter the probabilities read in the csv for a specific person."""
         # List to store temporary probabilities
         edge_probs = []
 
@@ -126,8 +118,9 @@ class Game:
 
         return self.balance_data(edge_probs,data,affected_node)
     
-    # Function to alter the probabilities in the middle of a match generating a new graph
+    
     def alter_probabilities_match(self,data,affected_node,indexes):
+        """Alter the probabilities in the middle of a match generating a new graph"""
         # List to store temporary probabilities
         edge_probs = []
 
@@ -145,8 +138,8 @@ class Game:
 
         return self.balance_data(edge_probs,data,affected_node)
 
-    # Function to balance the probabilities after altering them
     def balance_data(self, edge_probs, data, affected_node):
+        """Balance the probabilities after altering them"""
         # Balance all of them
         total = 0
         for probability in edge_probs:
@@ -166,8 +159,8 @@ class Game:
 
         return data
 
-    # Start day 1 of the game
     def start_day1(self):
+        """Start cornucopia day"""
         actions, tributes, changes = self.graph_manager.obtain_actions_day1(self.tributes)
         alive = []
         for tribute in tributes:
@@ -178,8 +171,8 @@ class Game:
         self.tributes = alive
         return actions, self.tributes, self.dead
 
-    # Start a regular day or night
     def start_period(self):
+        """Start a regular day or night"""
         self.dead = []
         actions, tributes, changes = self.graph_manager.obtain_actions(self.tributes)
         alive = []
@@ -193,6 +186,7 @@ class Game:
 
 
     def process_changes(self, tribute, changes):
+        """Process any graph changes needed"""
         # Check if the probabilitites need to be altered
         altered = False
         for change in changes:
@@ -242,4 +236,3 @@ class Game:
                     tribute["graphs"][1] = self.graph_manager.create_graph(new_data)
 
         return tribute
-            

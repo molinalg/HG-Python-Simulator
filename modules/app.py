@@ -2,6 +2,7 @@ import tkinter as tk
 from modules.district import District
 from modules.game import Game
 
+# Class to control the interface and the flow of the game
 class App:
     window = None
     frames = []
@@ -18,17 +19,17 @@ class App:
         # Dead tributes
         self.dead = []
     
-    # Start the window
     def start(self):
+        """Open the window"""
         self.window.mainloop()
 
-    # Clean the window
     def clean_window(self):
+        """Clean a window"""
         for widget in self.window.winfo_children():
             widget.destroy()
 
-    # Create the menu (welcome page)
     def menu(self):
+        """Create the itinial menu"""
         # Clean the window
         self.clean_window()
 
@@ -47,8 +48,8 @@ class App:
         self.exit_button = tk.Button(self.window, text="Exit", command=self.window.destroy)
         self.exit_button.pack()
     
-    # Create the configuration page
     def match_configuration(self):
+        """Create the configuration page"""
         # Clean the window
         self.clean_window()
 
@@ -72,8 +73,8 @@ class App:
         for label in self.frames:
             label.destroy()
 
-    # Add a district
     def add_district(self):
+        """Add a district to the list of districts participating"""
         # Current maximum of districts is 12
         if len(self.districts) < 12:
             # Asign the number of the district
@@ -125,8 +126,8 @@ class App:
         if len(self.districts) == 1:
             self.start_button.config(state=tk.NORMAL)
     
-    # Edit a district's participants
     def edit_district(self,district_number):
+        """Edit the participants of a specific district"""
         # Create a new window
         edit_window = tk.Toplevel(self.window)
         edit_window.title("Edit District " + str(district_number))
@@ -164,8 +165,8 @@ class App:
         save_button = tk.Button(edit_frame, text="Save", command=lambda: self.save_district(district_number,name1.get(),name2.get(),edit_window))
         save_button.pack(side=tk.LEFT, padx=10, pady=5)
     
-    # Change the attributes of a tribute
     def change_attributes(self,window,district_number,name,index):
+        """Change the attributes of a tribute"""
         # Obtain the tribute
         for district in self.districts:
             if district.number == district_number:
@@ -235,8 +236,8 @@ class App:
         save_attr_button = tk.Button(button_frame, text="Save", command=lambda: self.save_attributes(attributes, member, attributes_window))
         save_attr_button.pack(side=tk.LEFT)
 
-    # Used to increase the label value for an attribute
     def increase_value(self,attributes,name,points,points_label_text):
+        """Increase the label value for an attribute"""
         points = 20
         for total in attributes.values():
             points -= int(total.get().split(" ")[1][:-3])
@@ -250,8 +251,8 @@ class App:
         points_label_text.set("Points left: " + str(points))
         attributes[name].set(parts[0]+" {}/10".format(value))
 
-    # Used to decrease the label value for an attribute
     def decrease_value(self,attributes,name,points,points_label_text):
+        """Decrease the label value for an attribute"""
         points = 20
         for total in attributes.values():
             points -= int(total.get().split(" ")[1][:-3])
@@ -265,8 +266,8 @@ class App:
         points_label_text.set("Points left: " + str(points))
         attributes[name].set(parts[0]+" {}/10".format(value))
     
-    # Save the attributes of a tribute
     def save_attributes(self,attributes,tribute,window):
+        """Save the attributes of a tribute"""
         # Obtain the district number
         district_number = tribute.district
         # Load values into the dictionary
@@ -288,8 +289,8 @@ class App:
         # Close the window
         window.destroy()
 
-    # Save the changes of the district
     def save_district(self,district_number,name1_entry,name2_entry,window):
+        """Save the changes of the district"""
         # Change the names of the participants
         for district in self.districts:
             if district.number == district_number:
@@ -305,8 +306,8 @@ class App:
         # Close the window
         window.destroy()
 
-    # Remove a district
     def remove_district(self,district_number):
+        """Remove a district from the list of participating districts"""
         # Destroy and remove corresponding frame
         for frame in self.frames:
             if int(frame.winfo_children()[0].cget("text").split(" ")[1]) == district_number:
@@ -331,8 +332,8 @@ class App:
         
         self.reorder += 1
     
-    # Match screen
     def match_screen(self):
+        """Generate the match screen, starting the game"""
         # Clean the window
         self.clean_window()
 
@@ -376,8 +377,8 @@ class App:
         # Set mode as 1 (regular day/night)
         self.mode = 1
 
-    # Advance the day
     def advance_day(self,day,game):
+        """Start the following day or night"""
         # Make sure there are still 2 or more tributes left
         if len(self.tributes) > 1:
             # Clean the events text
@@ -427,13 +428,16 @@ class App:
             # If there is less than 2 tributes left, the game is over
             self.finish_game()
 
-    # Create the game over screen to show the winner
     def finish_game(self):
+        """Create the game over screen to show the winner"""
         # Clean the window
         self.clean_window()
 
         # Set the window title
         self.window.title("Game Over - Hunger Games")
+
+        # Set the size of the window
+        self.window.geometry("1000x600")
 
         # Title label for game over
         self.game_over_label = tk.Label(self.window, text="Game Over", font=("Helvetica", 22))
