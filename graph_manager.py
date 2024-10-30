@@ -114,14 +114,15 @@ class Graph_Manager:
             message += tribute["name"] + " from district " + str(tribute["district"]) + " "
             graph = tribute["graphs"][1]
             current_node = tribute["node"]
-
             # Find the next node
             current_node, result = self.next_node(graph,current_node,current_node)
+
             if "[Y]" in current_node[0][1]:
+                # If there is no other tribute to fight with, we select another node
                 if len(tributes) == 0:
                     while "[Y]" in current_node[0][1]:
                         current_node, result = self.next_node(graph,tribute["node"],result)
-                    message += current_node[0][1]
+
                 else:
                     message += current_node[0][1]
                     tribute2 = random.choice(tributes)
@@ -131,7 +132,7 @@ class Graph_Manager:
                     # If there was a fight, we generate the result
                     if current_node == (('FIGHT', 'encounters [Y] and decides to fight, '),):
                         current_node, result = self.next_node(graph,current_node,result)
-                        message += current_node[0][1]
+
                         if result == "YO":
                             tribute2["status"] = "dead"
                         elif result == "HO":
@@ -140,7 +141,7 @@ class Graph_Manager:
                         processed.append(tribute2)
 
             # If a random event occurs, we select a random event from the list the tribute has using the weights
-            elif "[R]" in current_node[0][1]:
+            if "[R]" in current_node[0][1]:
                 # Get the list of random events
                 random_events = tribute["random_events"]
                 possible_events = []
